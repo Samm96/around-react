@@ -1,6 +1,8 @@
 function App() {
   return (
+    <>
     <div class="page">
+    <div>
       <header class="header">
         <img
           class="header__logo"
@@ -35,7 +37,8 @@ function App() {
           </div>
         </section>
 
-        <section class="elements"></section>
+        <section class="elements">
+        </section>
 
         <section class="popup-form" id="edit-popup-form">
           <div class="popup-form__container">
@@ -178,6 +181,30 @@ function App() {
         <p class="footer__copyright">&copy; 2021 Around The U.S.</p>
       </footer>
     </div>
+    <template id="card-template">
+      <article class="element">
+        <button
+          arial-label="delete"
+          type="button"
+          class="delete-button"
+          id="delete-card-button"
+        ></button>
+        <img class="element__image" src="not_found.jpg" alt="" />
+        <div class="element__card">
+          <h2 class="element__title"></h2>
+          <div class="element__like-container">
+            <button
+              arial-label="like"
+              type="button"
+              class="like-button"
+            ></button>
+            <p class="like-button__counter">0</p>
+          </div>
+        </div>
+      </article>
+    </template>
+    </div>
+    </>
   );
 }
 
