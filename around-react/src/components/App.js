@@ -1,15 +1,11 @@
+import Header from './Header';
+
 function App() {
   return (
     <>
     <div class="page">
     <div>
-      <header class="header">
-        <img
-          class="header__logo"
-          alt="Around the U.S. Logo"
-        />
-      </header>
-
+      <Header />
       <main>
         <section class="profile">
           <div class="profile__group">
