@@ -1,4 +1,18 @@
 function Main() {
+
+  function handleEditAvatarClick() {
+    document.querySelector(`#profile-picture-popup`).classList.add(`popup-form_open`);
+  }
+
+  function handleEditProfileClick() {
+    document.querySelector(`#edit-popup-form`).classList.add(`popup-form_open`);
+  }
+
+  function handleAddPlaceClick() {
+    document.querySelector(`#create-popup-form`).classList.add(`popup-form_open`);
+  }
+
+
   return (
     <>
       <main>
@@ -7,6 +21,7 @@ function Main() {
             <div class="profile__image-container">
               <div class="profile__overlay">
                 <button
+                  onClick={handleEditAvatarClick}
                   type="button"
                   class="edit-button edit-button_type_profile-image"
                   id="edit-pic-button"
@@ -22,8 +37,8 @@ function Main() {
               <h1 class="profile__name">Samantha Horsch</h1>
               <p class="profile__description">Explorer</p>
             </div>
-            <button id="edit-button" type="button" class="edit-button"></button>
-            <button type="button" class="add-button"></button>
+            <button onClick={handleEditProfileClick} id="edit-button" type="button" class="edit-button"></button>
+            <button onClick={handleAddPlaceClick} type="button" class="add-button"></button>
           </div>
         </section>
 
