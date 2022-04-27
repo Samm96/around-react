@@ -6,7 +6,6 @@ function App() {
       <header class="header">
         <img
           class="header__logo"
-          src="<%=require('./images/logo.svg')%>"
           alt="Around the U.S. Logo"
         />
       </header>
