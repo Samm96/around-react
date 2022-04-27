@@ -1,7 +1,10 @@
-function Main() {
+import PopupWithForm from "./PopupWithForm";
 
+function Main() {
   function handleEditAvatarClick() {
-    document.querySelector(`#profile-picture-popup`).classList.add(`popup-form_open`);
+    document
+      .querySelector(`#profile-picture-popup`)
+      .classList.add(`popup-form_open`);
   }
 
   function handleEditProfileClick() {
@@ -9,9 +12,10 @@ function Main() {
   }
 
   function handleAddPlaceClick() {
-    document.querySelector(`#create-popup-form`).classList.add(`popup-form_open`);
+    document
+      .querySelector(`#create-popup-form`)
+      .classList.add(`popup-form_open`);
   }
-
 
   return (
     <>
@@ -37,13 +41,29 @@ function Main() {
               <h1 class="profile__name">Samantha Horsch</h1>
               <p class="profile__description">Explorer</p>
             </div>
-            <button onClick={handleEditProfileClick} id="edit-button" type="button" class="edit-button"></button>
-            <button onClick={handleAddPlaceClick} type="button" class="add-button"></button>
+            <button
+              onClick={handleEditProfileClick}
+              id="edit-button"
+              type="button"
+              class="edit-button"
+            ></button>
+            <button
+              onClick={handleAddPlaceClick}
+              type="button"
+              class="add-button"
+            ></button>
           </div>
         </section>
 
         <section class="elements"></section>
 
+        <PopupWithForm
+          name="edit"
+          title="Edit Profile"
+          formId="edit-popup-form"
+          buttonId="edit-submit"
+          buttonText="Save"
+        />
         <section class="popup-form" id="edit-popup-form">
           <div class="popup-form__container">
             <button type="button" class="close-button"></button>
