@@ -1,3 +1,5 @@
+import React from "react";
+import {api} from "../utils/Api";
 import PopupWithForm from "./PopupWithForm";
 
 function Main({
@@ -5,6 +7,24 @@ function Main({
   onEditProfileClick,
   onAddPlaceClick
 }) {
+
+const [userName, setUserName] = React.useState("");
+const [userInfo, setUserDescription] = React.useState("");
+const [userAvatar, setUserAvatar] = React.useState("");
+const [cards, setCards] = React.useState([]);
+
+React.useEffect(() => {
+  api
+    .getAppInfo()
+    .then(([user, card]) => {
+      setUserName(user.name);
+      setUserDescription(user.about);
+      setUserAvatar(user.avatar);
+      setCards(card);
+    })
+    .catch((err) => console.log(err));
+}, []);
+
   return (
     <>
       <main>
@@ -21,13 +41,13 @@ function Main({
               </div>
               <img
                 class="profile__image"
-                src="<%=require('./images/21.04.06-Samantha-Horsch-006-2.jpg')%>"
+                src={userAvatar}
                 alt="Profile Picture"
               />
             </div>
             <div class="profile__info">
-              <h1 class="profile__name">Samantha Horsch</h1>
-              <p class="profile__description">Explorer</p>
+              <h1 class="profile__name">{userName}</h1>
+              <p class="profile__description">{userInfo}</p>
             </div>
             <button
               onClick={onEditProfileClick}
