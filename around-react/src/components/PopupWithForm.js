@@ -4,12 +4,14 @@ function PopupWithForm({
   children,
   buttonText = "Save",
   buttonId,
-  formId,
+  formContainer,
+  isOpen,
 }) {
+
   return (
     <>
-      <div className={`popup-form ${formId}`}>
-        <div className={"popup-form__container"}>
+      <div className={`popup-form ${isOpen ? "popup-form_open" : ""}`}>
+        <div className={formContainer}>
           <button type="button" className="close-button"></button>
           <h2 className="popup-form__title">{title}</h2>
           <form className="popup-form__input-container" name={name}>
