@@ -28,6 +28,13 @@ function App() {
     setDeleteConfirmPopupOpen(true);
   }
 
+  function closeAllPopups() {
+    setEditProfilePopupOpen(false);
+    setEditAvatarPopupOpen(false);
+    setAddPlacePopupOpen(false);
+    setDeleteConfirmPopupOpen(false);
+  }
+
   return (
     <>
       <div class="page">
@@ -45,6 +52,7 @@ function App() {
             name="profile pic"
             title="Change profile picture"
             isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
           >
             <div class="popup-form__input-container">
               <input
@@ -73,6 +81,7 @@ function App() {
             name="edit"
             title="Edit Profile"
             isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
           >
             <div class="popup-form__input-container">
               <input
@@ -110,6 +119,7 @@ function App() {
             name="create"
             title="New place"
             isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
           >
             <div class="popup-form__input-container">
               <input
@@ -147,6 +157,7 @@ function App() {
           <PopupWithForm
             title="Are you sure?"
             isOpen={isDeleteConfirmPopupOpen}
+            onClose={closeAllPopups}
           >
             <div>
               <button
