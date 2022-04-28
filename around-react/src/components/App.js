@@ -9,6 +9,8 @@ function App() {
     React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
+    React.useState(false);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -21,6 +23,11 @@ function App() {
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
+
+  function handleDeleteConfirmClick() {
+    setDeleteConfirmPopupOpen(true);
+  }
+
   return (
     <>
       <div class="page">
@@ -30,6 +37,7 @@ function App() {
             onEditProfileClick={handleEditProfileClick}
             onAddPlaceClick={handleAddPlaceClick}
             onEditAvatarClick={handleEditAvatarClick}
+            onDeleteCardClick={handleDeleteConfirmClick}
           />
           <Footer />
 
@@ -135,7 +143,22 @@ function App() {
               </button>
             </div>
           </PopupWithForm>
-          
+
+          <PopupWithForm
+            title="Are you sure?"
+            isOpen={isDeleteConfirmPopupOpen}
+          >
+            <div>
+              <button
+                type="button"
+                class="delete-button delete-button_type_deleteConfirm"
+                id="confirmation-button"
+              >
+                Yes
+              </button>
+            </div>
+          </PopupWithForm>
+
         </div>
         <template id="card-template">
           <article class="element">
