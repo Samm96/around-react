@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
@@ -35,12 +36,9 @@ function App() {
           <PopupWithForm
             name="profile pic"
             title="Change profile picture"
-            buttonText="Save"
-            buttonId="profile-pic-button"
-            formContainer="profile__image-container"
             isOpen={isEditAvatarPopupOpen}
           >
-            <div>
+            <div class="popup-form__input-container">
               <input
                 class="popup-form__input"
                 name="url"
@@ -51,18 +49,24 @@ function App() {
                 required
               />
               <span class="popup-form__error-text profile-pic-error"></span>
+              <button
+                type="submit"
+                class="submit-button"
+                id="profile-pic-button"
+                name="submit"
+                disabled
+              >
+                Save
+              </button>
             </div>
           </PopupWithForm>
 
           <PopupWithForm
             name="edit"
             title="Edit Profile"
-            buttonText="Save"
-            buttonId="edit-submit"
-            formContainer="popup-form__container"
             isOpen={isEditProfilePopupOpen}
           >
-            <div>
+            <div class="popup-form__input-container">
               <input
                 class="popup-form__input"
                 id="name"
@@ -83,18 +87,23 @@ function App() {
                 required
               />
               <span class="popup-form__error-text about-error"></span>
+              <button
+                name="submit"
+                type="submit"
+                class="submit-button"
+                id="edit-submit"
+              >
+                Save
+              </button>
             </div>
           </PopupWithForm>
 
           <PopupWithForm
             name="create"
             title="New place"
-            buttonText="Create"
-            buttonId="create-button"
-            formContainer="popup-form__container"
             isOpen={isAddPlacePopupOpen}
           >
-            <div>
+            <div class="popup-form__input-container">
               <input
                 class="popup-form__input"
                 id="title"
@@ -115,6 +124,15 @@ function App() {
                 required
               />
               <span class="popup-form__error-text image-link-error"></span>
+              <button
+                type="submit"
+                class="submit-button"
+                id="create-button"
+                name="submit"
+                disabled
+              >
+                Create
+              </button>
             </div>
           </PopupWithForm>
           
