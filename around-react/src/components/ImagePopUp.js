@@ -1,12 +1,17 @@
-import Popup from "./Popup.js";
-export default class PopupWithImage extends Popup {
-  open({ url, title }) {
-    this._popupElement.querySelector(".popup-form__caption").textContent =
-      title;
-    this._imgElement = this._popupElement.querySelector(".popup-form__image");
-    this._imgElement.src = url;
-    this._imgElement.alt = title;
+function ImagePopup({
+  card,
+  onClose
+}) {
 
-    super.open();
-  }
+  return (
+      <div className={`popup-form ${card ? "popup-form_open" : ""}`}>
+        <div className="popup-form__container popup-form__container_type_image">
+          <button type="button" className="close-button" onClick={onClose}></button>
+          <p className="popup-form__caption">{card.name}</p>
+          <button type="button" class="close-button"></button>
+        </div>
+      </div>
+  );
 }
+
+export default ImagePopup;

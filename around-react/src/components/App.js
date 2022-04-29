@@ -11,6 +11,7 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
     React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(false);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -28,11 +29,16 @@ function App() {
     setDeleteConfirmPopupOpen(true);
   }
 
+  function handleCardClick() {
+    setSelectedCard(true);
+  }
+
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);
     setAddPlacePopupOpen(false);
     setDeleteConfirmPopupOpen(false);
+    setSelectedCard(false);
   }
 
   return (
