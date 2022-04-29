@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
@@ -38,7 +39,7 @@ function App() {
     setEditAvatarPopupOpen(false);
     setAddPlacePopupOpen(false);
     setDeleteConfirmPopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard(null);
   }
 
   return (
@@ -51,6 +52,7 @@ function App() {
             onAddPlaceClick={handleAddPlaceClick}
             onEditAvatarClick={handleEditAvatarClick}
             onDeleteCardClick={handleDeleteConfirmClick}
+            onCardClick={handleCardClick}
           />
           <Footer />
 
@@ -176,29 +178,9 @@ function App() {
             </div>
           </PopupWithForm>
 
+          <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
         </div>
-        <template id="card-template">
-          <article class="element">
-            <button
-              arial-label="delete"
-              type="button"
-              class="delete-button"
-              id="delete-card-button"
-            ></button>
-            <img class="element__image" src="not_found.jpg" alt="" />
-            <div class="element__card">
-              <h2 class="element__title"></h2>
-              <div class="element__like-container">
-                <button
-                  arial-label="like"
-                  type="button"
-                  class="like-button"
-                ></button>
-                <p class="like-button__counter">0</p>
-              </div>
-            </div>
-          </article>
-        </template>
       </div>
     </>
   );
