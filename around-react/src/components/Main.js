@@ -1,11 +1,13 @@
 import React from "react";
 import {api} from "../utils/Api";
 import PopupWithForm from "./PopupWithForm";
+import Card from "./Card";
 
 function Main({
   onEditAvatarClick,
   onEditProfileClick,
-  onAddPlaceClick
+  onAddPlaceClick,
+  onCardClick
 }) {
 
 const [userName, setUserName] = React.useState("");
@@ -16,11 +18,11 @@ const [cards, setCards] = React.useState([]);
 React.useEffect(() => {
   api
     .getAppInfo()
-    .then(([user, card]) => {
+    .then(([user, cardData]) => {
       setUserName(user.name);
       setUserDescription(user.about);
       setUserAvatar(user.avatar);
-      setCards(card);
+      setCards(cardData);
     })
     .catch((err) => console.log(err));
 }, []);
@@ -63,8 +65,11 @@ React.useEffect(() => {
           </div>
         </section>
 
-        <section class="elements"></section>
-
+        <section class="elements">
+          {cards.map((card) => (
+            <Card key={card._id} card={card} onClick={onCardClick}/>
+          ))}
+        </section>
       </main>
     </>
   );
