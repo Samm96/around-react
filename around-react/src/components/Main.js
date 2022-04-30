@@ -30,42 +30,42 @@ React.useEffect(() => {
   return (
     <>
       <main>
-        <section class="profile">
-          <div class="profile__group">
-            <div class="profile__image-container">
-              <div class="profile__overlay">
+        <section className="profile">
+          <div className="profile__group">
+            <div className="profile__image-container">
+              <div className="profile__overlay">
                 <button
                   onClick={onEditAvatarClick}
                   type="button"
-                  class="edit-button edit-button_type_profile-image"
+                  className="edit-button edit-button_type_profile-image"
                   id="edit-pic-button"
                 ></button>
               </div>
               <img
-                class="profile__image"
+                className="profile__image"
                 src={userAvatar}
                 alt="Profile Picture"
               />
             </div>
-            <div class="profile__info">
-              <h1 class="profile__name">{userName}</h1>
-              <p class="profile__description">{userInfo}</p>
+            <div className="profile__info">
+              <h1 className="profile__name">{userName}</h1>
+              <p className="profile__description">{userInfo}</p>
             </div>
             <button
               onClick={onEditProfileClick}
               id="edit-button"
               type="button"
-              class="edit-button"
+              className="edit-button"
             ></button>
             <button
               onClick={onAddPlaceClick}
               type="button"
-              class="add-button"
+              className="add-button"
             ></button>
           </div>
         </section>
 
-        <section class="elements">
+        <section className="elements">
           {cards.map((card) => (
             <Card key={card._id} card={card} onCardClick={onCardClick}/>
           ))}

@@ -45,7 +45,7 @@ function App() {
 
   return (
     <>
-      <div class="page">
+      <div className="page">
         <div>
           <Header />
           <Main
@@ -63,9 +63,9 @@ function App() {
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
           >
-            <div class="popup-form__input-container">
+            <div className="popup-form__input-container">
               <input
-                class="popup-form__input"
+                className="popup-form__input"
                 name="url"
                 placeholder="add image..."
                 id="profile-pic"
@@ -73,10 +73,10 @@ function App() {
                 pattern="https://.*|http://.*"
                 required
               />
-              <span class="popup-form__error-text profile-pic-error"></span>
+              <span className="popup-form__error-text profile-pic-error"></span>
               <button
                 type="submit"
-                class="submit-button"
+                className="submit-button"
                 id="profile-pic-button"
                 name="submit"
                 disabled
@@ -92,9 +92,9 @@ function App() {
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
           >
-            <div class="popup-form__input-container">
+            <div className="popup-form__input-container">
               <input
-                class="popup-form__input"
+                className="popup-form__input"
                 id="name"
                 name="name"
                 placeholder="name"
@@ -102,9 +102,9 @@ function App() {
                 maxlength="40"
                 required
               />
-              <span class="popup-form__error-text name-error"></span>
+              <span className="popup-form__error-text name-error"></span>
               <input
-                class="popup-form__input"
+                className="popup-form__input"
                 name="about"
                 placeholder="description"
                 id="about"
@@ -112,11 +112,11 @@ function App() {
                 maxlength="200"
                 required
               />
-              <span class="popup-form__error-text about-error"></span>
+              <span className="popup-form__error-text about-error"></span>
               <button
                 name="submit"
                 type="submit"
-                class="submit-button"
+                className="submit-button"
                 id="edit-submit"
               >
                 Save
@@ -130,9 +130,9 @@ function App() {
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
           >
-            <div class="popup-form__input-container">
+            <div className="popup-form__input-container">
               <input
-                class="popup-form__input"
+                className="popup-form__input"
                 id="title"
                 name="name"
                 placeholder="title"
@@ -140,9 +140,9 @@ function App() {
                 maxlength="30"
                 required
               />
-              <span class="popup-form__error-text title-error"></span>
+              <span className="popup-form__error-text title-error"></span>
               <input
-                class="popup-form__input"
+                className="popup-form__input"
                 name="link"
                 placeholder="image link"
                 id="image-link"
@@ -150,10 +150,10 @@ function App() {
                 pattern="https://.*|http://.*"
                 required
               />
-              <span class="popup-form__error-text image-link-error"></span>
+              <span className="popup-form__error-text image-link-error"></span>
               <button
                 type="submit"
-                class="submit-button"
+                className="submit-button"
                 id="create-button"
                 name="submit"
                 disabled
@@ -171,7 +171,7 @@ function App() {
             <div>
               <button
                 type="button"
-                class="delete-button delete-button_type_deleteConfirm"
+                className="delete-button delete-button_type_deleteConfirm"
                 id="confirmation-button"
               >
                 Yes
