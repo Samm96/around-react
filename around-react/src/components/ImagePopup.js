@@ -14,7 +14,7 @@ function ImagePopup({
               src={card ? card.link : ""}
               alt={card ? card.name : ""}
             />
-          <p className="popup-form__caption">{card ? card.title: ""}</p>
+          <p className="popup-form__caption">{card ? card.name: ""}</p>
           <button type="button" className="close-button" onClick={onClose}></button>
         </div>
       </div>
