@@ -67,7 +67,7 @@ React.useEffect(() => {
 
         <section class="elements">
           {cards.map((card) => (
-            <Card key={card._id} card={card} onClick={onCardClick}/>
+            <Card key={card._id} card={card} onCardClick={onCardClick}/>
           ))}
         </section>
       </main>

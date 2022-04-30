@@ -5,6 +5,7 @@ import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 
+
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
     React.useState(false);
@@ -30,8 +31,8 @@ function App() {
     setDeleteConfirmPopupOpen(true);
   }
 
-  function handleCardClick() {
-    setSelectedCard(true);
+  function handleCardClick(card) {
+    setSelectedCard(card);
   }
 
   function closeAllPopups() {
@@ -39,7 +40,7 @@ function App() {
     setEditAvatarPopupOpen(false);
     setAddPlacePopupOpen(false);
     setDeleteConfirmPopupOpen(false);
-    setSelectedCard(null);
+    setSelectedCard(false);
   }
 
   return (
