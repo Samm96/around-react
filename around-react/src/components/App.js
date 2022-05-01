@@ -13,7 +13,7 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
     React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState();
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -62,6 +62,10 @@ function App() {
             title="Change profile picture"
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
+            buttonText="Save"
+            buttonType="submit"
+            buttonClassName="submit-button"
+            buttonId="profile-pic-button"
           >
             <div className="popup-form__input-container">
               <input
@@ -74,15 +78,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text profile-pic-error"></span>
-              <button
-                type="submit"
-                className="submit-button"
-                id="profile-pic-button"
-                name="submit"
-                disabled
-              >
-                Save
-              </button>
             </div>
           </PopupWithForm>
 
@@ -91,8 +86,12 @@ function App() {
             title="Edit Profile"
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
+            buttonText="Save"
+            buttonType="submit"
+            buttonClassName="submit-button"
+            buttonId="edit-submit"
           >
-            <div className="popup-form__input-container">
+            <div>
               <input
                 className="popup-form__input"
                 id="name"
@@ -113,14 +112,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text about-error"></span>
-              <button
-                name="submit"
-                type="submit"
-                className="submit-button"
-                id="edit-submit"
-              >
-                Save
-              </button>
             </div>
           </PopupWithForm>
 
@@ -129,6 +120,10 @@ function App() {
             title="New place"
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
+            buttonText="Create"
+            buttonType="submit"
+            buttonClassName="submit-button"
+            buttonId="create-button"
           >
             <div className="popup-form__input-container">
               <input
@@ -151,15 +146,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text image-link-error"></span>
-              <button
-                type="submit"
-                className="submit-button"
-                id="create-button"
-                name="submit"
-                disabled
-              >
-                Create
-              </button>
             </div>
           </PopupWithForm>
 
@@ -167,16 +153,11 @@ function App() {
             title="Are you sure?"
             isOpen={isDeleteConfirmPopupOpen}
             onClose={closeAllPopups}
+            buttonText="Yes"
+            buttonType="button"
+            buttonClassName="delete-button delete-button_type_deleteConfirm"
+            buttonId="confirmation-button"
           >
-            <div>
-              <button
-                type="button"
-                className="delete-button delete-button_type_deleteConfirm"
-                id="confirmation-button"
-              >
-                Yes
-              </button>
-            </div>
           </PopupWithForm>
 
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
