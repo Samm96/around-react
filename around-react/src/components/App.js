@@ -67,7 +67,6 @@ function App() {
             buttonClassName="submit-button"
             buttonId="profile-pic-button"
           >
-            <div className="popup-form__input-container">
               <input
                 className="popup-form__input"
                 name="url"
@@ -78,7 +77,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text profile-pic-error"></span>
-            </div>
           </PopupWithForm>
 
           <PopupWithForm
@@ -91,7 +89,6 @@ function App() {
             buttonClassName="submit-button"
             buttonId="edit-submit"
           >
-            <div>
               <input
                 className="popup-form__input"
                 id="name"
@@ -112,7 +109,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text about-error"></span>
-            </div>
           </PopupWithForm>
 
           <PopupWithForm
@@ -125,7 +121,6 @@ function App() {
             buttonClassName="submit-button"
             buttonId="create-button"
           >
-            <div className="popup-form__input-container">
               <input
                 className="popup-form__input"
                 id="title"
@@ -146,7 +141,6 @@ function App() {
                 required
               />
               <span className="popup-form__error-text image-link-error"></span>
-            </div>
           </PopupWithForm>
 
           <PopupWithForm
