@@ -1,7 +1,7 @@
 import React from "react";
 import {api} from "../utils/Api";
-import PopupWithForm from "./PopupWithForm";
 import Card from "./Card";
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({
   onEditAvatarClick,
@@ -10,18 +10,14 @@ function Main({
   onCardClick
 }) {
 
-const [userName, setUserName] = React.useState("");
-const [userInfo, setUserDescription] = React.useState("");
-const [userAvatar, setUserAvatar] = React.useState("");
+const currentUser = React.useContext(CurrentUserContext);
+
 const [cards, setCards] = React.useState([]);
 
 React.useEffect(() => {
   api
-    .getAppInfo()
-    .then(([user, cardData]) => {
-      setUserName(user.name);
-      setUserDescription(user.about);
-      setUserAvatar(user.avatar);
+    .getInitialCardList()
+    .then((cardData) => {
       setCards(cardData);
     })
     .catch((err) => console.log(err));
@@ -43,13 +39,13 @@ React.useEffect(() => {
               </div>
               <img
                 className="profile__image"
-                src={userAvatar}
+                src={currentUser.avatar}
                 alt="Profile Picture"
               />
             </div>
             <div className="profile__info">
-              <h1 className="profile__name">{userName}</h1>
-              <p className="profile__description">{userInfo}</p>
+              <h1 className="profile__name">{currentUser.name}</h1>
+              <p className="profile__description">{currentUser.about}</p>
             </div>
             <button
               onClick={onEditProfileClick}
