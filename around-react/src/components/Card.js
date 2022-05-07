@@ -1,6 +1,16 @@
 import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick }) {
+
+  const currentUser = React.useContext(CurrentUserContext);
+  
+  const isOwn = card.owner._id === currentUser._id;
+
+  const cardDeleteButtonClassName = (
+    `delete-button ${isOwn ? "" : "delete-button_hidden"}`
+  );
+
   function handleClick() {
     onCardClick(card);
   }
@@ -9,7 +19,7 @@ function Card({ card, onCardClick }) {
         <button
           arial-label="delete"
           type="button"
-          className="delete-button"
+          className={cardDeleteButtonClassName}
           id="delete-card-button"
         ></button>
         <img className="element__image" src={card.link} alt={card.name} onClick={handleClick}/>
