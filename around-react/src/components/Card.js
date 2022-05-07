@@ -11,6 +11,14 @@ function Card({ card, onCardClick }) {
     `delete-button ${isOwn ? "" : "delete-button_hidden"}`
   );
 
+
+  //maybe works? come back to this
+  const isLiked = card.likes.some(user => user._id === currentUser._id);
+
+  const cardLikeButtonClassName = (
+    `like-button ${isLiked ? "like-button_active" : ""}`
+  );
+
   function handleClick() {
     onCardClick(card);
   }
@@ -29,7 +37,7 @@ function Card({ card, onCardClick }) {
             <button
               arial-label="like"
               type="button"
-              className="like-button"
+              className={cardLikeButtonClassName}
             ></button>
             <p className="like-button__counter">{card.likes.length}</p>
           </div>
