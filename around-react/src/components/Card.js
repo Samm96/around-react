@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Card({ card, onCardClick }) {
+function Card({ card, onCardClick, onCardLike }) {
 
   const currentUser = React.useContext(CurrentUserContext);
   
@@ -12,16 +12,21 @@ function Card({ card, onCardClick }) {
   );
 
 
-  //maybe works? come back to this
+  //maybe works? come back to this //not working. button not active
   const isLiked = card.likes.some(user => user._id === currentUser._id);
 
   const cardLikeButtonClassName = (
     `like-button ${isLiked ? "like-button_active" : ""}`
   );
 
+  function handleCardLike() {
+    onCardLike(card);
+  }
+
   function handleClick() {
     onCardClick(card);
   }
+
   return (
       <article className="element">
         <button
@@ -38,6 +43,7 @@ function Card({ card, onCardClick }) {
               arial-label="like"
               type="button"
               className={cardLikeButtonClassName}
+              onCardLike={handleCardLike}
             ></button>
             <p className="like-button__counter">{card.likes.length}</p>
           </div>

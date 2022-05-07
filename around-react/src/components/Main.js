@@ -23,6 +23,16 @@ React.useEffect(() => {
     .catch((err) => console.log(err));
 }, []);
 
+function handleCardLike(card) {
+  const isLiked = card.likes.some(user => user._id === currentUser._id);
+  api
+    .toggleLikeCardStatus(card._id, !isLiked)
+    .then((newCard) => {
+      setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+    })
+    .catch((err) => console.log(err));
+}
+
   return (
     <>
       <main>
@@ -63,7 +73,7 @@ React.useEffect(() => {
 
         <section className="elements">
           {cards.map((card) => (
-            <Card key={card._id} card={card} onCardClick={onCardClick}/>
+            <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={handleCardLike}/>
           ))}
         </section>
       </main>
