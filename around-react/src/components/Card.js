@@ -43,7 +43,7 @@ function Card({ card, onCardClick, onCardLike }) {
               arial-label="like"
               type="button"
               className={cardLikeButtonClassName}
-              onCardLike={handleCardLike}
+              onClick={handleCardLike}
             ></button>
             <p className="like-button__counter">{card.likes.length}</p>
           </div>
