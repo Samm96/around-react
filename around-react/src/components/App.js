@@ -40,6 +40,16 @@ function App() {
     setEditProfilePopupOpen(true);
   }
 
+  function handleUpdateUser(userUpdate) {
+    api
+      .setUserInfo(userUpdate)
+      .then((newUserData) => {
+        setCurrentUser(newUserData);
+        closeAllPopups();
+      })
+      .catch((err) => console.log(err));
+  }
+
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
@@ -100,6 +110,7 @@ function App() {
             <EditProfilePopup
               isOpen={isEditProfilePopupOpen}
               onClose={closeAllPopups}
+              onUpdateUser={handleUpdateUser}
             />
 
             <PopupWithForm
