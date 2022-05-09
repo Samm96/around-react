@@ -49,6 +49,7 @@ function App() {
     setSelectedCard(card);
   }
 
+
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);

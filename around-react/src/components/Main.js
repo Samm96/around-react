@@ -33,6 +33,15 @@ function handleCardLike(card) {
     .catch((err) => console.log(err));
 }
 
+function handleCardDelete(card) {
+  api
+    .removeCard(card)
+    .then(() => {
+      setCards((cardData) => cardData.filter((c) => c._id !== card._id));
+    })
+    .catch((err) => console.log(err));
+}
+
   return (
     <>
       <main>
@@ -73,7 +82,7 @@ function handleCardLike(card) {
 
         <section className="elements">
           {cards.map((card) => (
-            <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={handleCardLike}/>
+            <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
           ))}
         </section>
       </main>
