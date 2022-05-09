@@ -4,9 +4,9 @@ import Footer from "./Footer";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import {api} from "../utils/Api";
+import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-
+import { EditProfilePopup } from "./EditProfilePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
@@ -16,8 +16,12 @@ function App() {
   const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
     React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
-  
-  const [currentUser, setCurrentUser] = React.useState({name: "", about: "", avatar: ""});
+
+  const [currentUser, setCurrentUser] = React.useState({
+    name: "",
+    about: "",
+    avatar: "",
+  });
 
   React.useEffect(() => {
     api
@@ -27,7 +31,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   });
-  
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -49,7 +52,6 @@ function App() {
     setSelectedCard(card);
   }
 
-
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);
@@ -60,29 +62,29 @@ function App() {
 
   return (
     <>
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div>
-          <Header />
-          <Main
-            onEditProfileClick={handleEditProfileClick}
-            onAddPlaceClick={handleAddPlaceClick}
-            onEditAvatarClick={handleEditAvatarClick}
-            onDeleteCardClick={handleDeleteConfirmClick}
-            onCardClick={handleCardClick}
-          />
-          <Footer />
+      <CurrentUserContext.Provider value={currentUser}>
+        <div className="page">
+          <div>
+            <Header />
+            <Main
+              onEditProfileClick={handleEditProfileClick}
+              onAddPlaceClick={handleAddPlaceClick}
+              onEditAvatarClick={handleEditAvatarClick}
+              onDeleteCardClick={handleDeleteConfirmClick}
+              onCardClick={handleCardClick}
+            />
+            <Footer />
 
-          <PopupWithForm
-            name="profile pic"
-            title="Change profile picture"
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
-            buttonText="Save"
-            buttonType="submit"
-            buttonClassName="submit-button"
-            buttonId="profile-pic-button"
-          >
+            <PopupWithForm
+              name="profile pic"
+              title="Change profile picture"
+              isOpen={isEditAvatarPopupOpen}
+              onClose={closeAllPopups}
+              buttonText="Save"
+              buttonType="submit"
+              buttonClassName="submit-button"
+              buttonId="profile-pic-button"
+            >
               <input
                 className="popup-form__input"
                 name="url"
@@ -93,50 +95,23 @@ function App() {
                 required
               />
               <span className="popup-form__error-text profile-pic-error"></span>
-          </PopupWithForm>
+            </PopupWithForm>
 
-          <PopupWithForm
-            name="edit"
-            title="Edit Profile"
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
-            buttonText="Save"
-            buttonType="submit"
-            buttonClassName="submit-button"
-            buttonId="edit-submit"
-          >
-              <input
-                className="popup-form__input"
-                id="name"
-                name="name"
-                placeholder="name"
-                minlength="2"
-                maxlength="40"
-                required
-              />
-              <span className="popup-form__error-text name-error"></span>
-              <input
-                className="popup-form__input"
-                name="about"
-                placeholder="description"
-                id="about"
-                minlength="2"
-                maxlength="200"
-                required
-              />
-              <span className="popup-form__error-text about-error"></span>
-          </PopupWithForm>
+            <EditProfilePopup
+              isOpen={isEditProfilePopupOpen}
+              onClose={closeAllPopups}
+            />
 
-          <PopupWithForm
-            name="create"
-            title="New place"
-            isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
-            buttonText="Create"
-            buttonType="submit"
-            buttonClassName="submit-button"
-            buttonId="create-button"
-          >
+            <PopupWithForm
+              name="create"
+              title="New place"
+              isOpen={isAddPlacePopupOpen}
+              onClose={closeAllPopups}
+              buttonText="Create"
+              buttonType="submit"
+              buttonClassName="submit-button"
+              buttonId="create-button"
+            >
               <input
                 className="popup-form__input"
                 id="title"
@@ -157,23 +132,21 @@ function App() {
                 required
               />
               <span className="popup-form__error-text image-link-error"></span>
-          </PopupWithForm>
+            </PopupWithForm>
 
-          <PopupWithForm
-            title="Are you sure?"
-            isOpen={isDeleteConfirmPopupOpen}
-            onClose={closeAllPopups}
-            buttonText="Yes"
-            buttonType="button"
-            buttonClassName="delete-button delete-button_type_deleteConfirm"
-            buttonId="confirmation-button"
-          >
-          </PopupWithForm>
+            <PopupWithForm
+              title="Are you sure?"
+              isOpen={isDeleteConfirmPopupOpen}
+              onClose={closeAllPopups}
+              buttonText="Yes"
+              buttonType="button"
+              buttonClassName="delete-button delete-button_type_deleteConfirm"
+              buttonId="confirmation-button"
+            ></PopupWithForm>
 
-          <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
+            <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+          </div>
         </div>
-      </div>
       </CurrentUserContext.Provider>
     </>
   );
