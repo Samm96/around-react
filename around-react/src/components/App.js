@@ -24,6 +24,36 @@ function App() {
     avatar: "",
   });
 
+  const [cards, setCards] = React.useState([]);
+
+  React.useEffect(() => {
+    api
+      .getInitialCardList()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(user => user._id === currentUser._id);
+    api
+      .toggleLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      })
+      .catch((err) => console.log(err));
+  }
+  
+  function handleCardDelete(card) {
+    api
+      .removeCard(card)
+      .then(() => {
+        setCards((cardData) => cardData.filter((c) => c._id !== card._id));
+      })
+      .catch((err) => console.log(err));
+  }
+
   React.useEffect(() => {
     api
       .getUserInfo()
@@ -93,6 +123,9 @@ function App() {
               onEditAvatarClick={handleEditAvatarClick}
               onDeleteCardClick={handleDeleteConfirmClick}
               onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+              cards={cards}
             />
             <Footer />
 
@@ -151,6 +184,8 @@ function App() {
             ></PopupWithForm>
 
             <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
+
           </div>
         </div>
       </CurrentUserContext.Provider>
