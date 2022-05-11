@@ -4,6 +4,7 @@ function PopupWithForm({
   children,
   isOpen,
   onClose,
+  onSubmit,
   buttonText,
   buttonType,
   buttonClassName,
@@ -26,6 +27,7 @@ function PopupWithForm({
                 type={buttonType}
                 className={buttonClassName}
                 id={buttonId}
+                onClick={onSubmit}
               >
                 {buttonText}
               </button>
