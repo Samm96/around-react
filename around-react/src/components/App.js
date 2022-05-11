@@ -30,7 +30,7 @@ function App() {
         setCurrentUser(userData);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
