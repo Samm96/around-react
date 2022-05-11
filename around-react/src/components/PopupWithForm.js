@@ -26,7 +26,6 @@ function PopupWithForm({
                 type={buttonType}
                 className={buttonClassName}
                 id={buttonId}
-                disabled
               >
                 {buttonText}
               </button>
