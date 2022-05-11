@@ -7,6 +7,7 @@ import ImagePopup from "./ImagePopup";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
@@ -50,6 +51,16 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  function handleUpdateAvatar(avatarUpdate) {
+    api
+      .updateProfilePicture(avatarUpdate)
+      .then((newAvatar) => {
+        setCurrentUser(newAvatar);
+        closeAllPopups();
+      })
+      .catch((err) => console.log(err));
+  }
+
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
@@ -85,27 +96,11 @@ function App() {
             />
             <Footer />
 
-            <PopupWithForm
-              name="profile pic"
-              title="Change profile picture"
+            <EditAvatarPopup
               isOpen={isEditAvatarPopupOpen}
               onClose={closeAllPopups}
-              buttonText="Save"
-              buttonType="submit"
-              buttonClassName="submit-button"
-              buttonId="profile-pic-button"
-            >
-              <input
-                className="popup-form__input"
-                name="url"
-                placeholder="add image..."
-                id="profile-pic"
-                type="url"
-                pattern="https://.*|http://.*"
-                required
-              />
-              <span className="popup-form__error-text profile-pic-error"></span>
-            </PopupWithForm>
+              onUpdateAvatar={handleUpdateAvatar}
+            />
 
             <EditProfilePopup
               isOpen={isEditProfilePopupOpen}
