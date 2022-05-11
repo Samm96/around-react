@@ -8,6 +8,7 @@ import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
@@ -41,6 +42,16 @@ function App() {
       .toggleLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function handleCardAdd(data) {
+    api
+      .addCard(data)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
@@ -141,37 +152,11 @@ function App() {
               onUpdateUser={handleUpdateUser}
             />
 
-            <PopupWithForm
-              name="create"
-              title="New place"
+            <AddPlacePopup 
               isOpen={isAddPlacePopupOpen}
               onClose={closeAllPopups}
-              buttonText="Create"
-              buttonType="submit"
-              buttonClassName="submit-button"
-              buttonId="create-button"
-            >
-              <input
-                className="popup-form__input"
-                id="title"
-                name="name"
-                placeholder="title"
-                minlength="1"
-                maxlength="30"
-                required
-              />
-              <span className="popup-form__error-text title-error"></span>
-              <input
-                className="popup-form__input"
-                name="link"
-                placeholder="image link"
-                id="image-link"
-                type="url"
-                pattern="https://.*|http://.*"
-                required
-              />
-              <span className="popup-form__error-text image-link-error"></span>
-            </PopupWithForm>
+              onCardAdd={handleCardAdd}
+            />
 
             <PopupWithForm
               title="Are you sure?"
@@ -184,8 +169,6 @@ function App() {
             ></PopupWithForm>
 
             <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
-
           </div>
         </div>
       </CurrentUserContext.Provider>
