@@ -19,6 +19,8 @@ function App() {
   const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
     React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const [currentUser, setCurrentUser] = React.useState({
     name: "",
@@ -48,13 +50,17 @@ function App() {
   }
 
   function handleCardAdd(data) {
+    setIsLoading(true);
     api
       .addCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
   
   function handleCardDelete(card) {
@@ -84,23 +90,31 @@ function App() {
   }
 
   function handleUpdateUser(userUpdate) {
+    setIsLoading(true);
     api
       .setUserInfo(userUpdate)
       .then((newUserData) => {
         setCurrentUser(newUserData);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   function handleUpdateAvatar(avatarUpdate) {
+    setIsLoading(true);
     api
       .updateProfilePicture(avatarUpdate)
       .then((newAvatar) => {
         setCurrentUser(newAvatar);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   function handleAddPlaceClick() {
@@ -145,18 +159,21 @@ function App() {
               isOpen={isEditAvatarPopupOpen}
               onClose={closeAllPopups}
               onUpdateAvatar={handleUpdateAvatar}
+              buttonText={isLoading ? "Saving..." : "Save"}
             />
 
             <EditProfilePopup
               isOpen={isEditProfilePopupOpen}
               onClose={closeAllPopups}
               onUpdateUser={handleUpdateUser}
+              buttonText={isLoading ? "Saving..." : "Save"}
             />
 
             <AddPlacePopup 
               isOpen={isAddPlacePopupOpen}
               onClose={closeAllPopups}
               onCardAdd={handleCardAdd}
+              buttonText={isLoading ? "Creating..." : "Create"}
             />
 
             <DeleteConfirmPopup

@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({ isOpen, onClose, onCardAdd }) {
+function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
     const [name, setName] = React.useState("");
     const [link, setLink] = React.useState("");
 
@@ -29,7 +29,7 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd }) {
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={handleAddPlaceSubmit}
-        buttonText="Create"
+        buttonText={buttonText}
         buttonType="submit"
         buttonClassName="submit-button"
         buttonId="create-button"

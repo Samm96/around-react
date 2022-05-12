@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
   const [avatar, setAvatar] = React.useState(null);
   const previousAvatar = React.useRef(avatar);
 
@@ -24,7 +24,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Save"
+      buttonText={buttonText}
       buttonType="submit"
       buttonClassName="submit-button"
       buttonId="profile-pic-button"
