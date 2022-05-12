@@ -9,6 +9,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import DeleteConfirmPopup from "./DeleteConfirmPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
@@ -158,7 +159,7 @@ function App() {
               onCardAdd={handleCardAdd}
             />
 
-            <PopupWithForm
+            <DeleteConfirmPopup
               title="Are you sure?"
               isOpen={isDeleteConfirmPopupOpen}
               onClose={closeAllPopups}
@@ -166,7 +167,7 @@ function App() {
               buttonType="button"
               buttonClassName="delete-button delete-button_type_deleteConfirm"
               buttonId="confirmation-button"
-            ></PopupWithForm>
+            ></DeleteConfirmPopup>
 
             <ImagePopup card={selectedCard} onClose={closeAllPopups} />
           </div>
