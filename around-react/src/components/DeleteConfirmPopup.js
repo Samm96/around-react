@@ -2,11 +2,11 @@ function DeleteConfirmPopup({
     isOpen, 
     onClose, 
     title, 
-    onCardDelete,
     buttonId,
     buttonClassName,
     buttonType,
     buttonText,
+    onDeleteCardSubmit
  }) {
 
   return (
@@ -22,7 +22,7 @@ function DeleteConfirmPopup({
               type={buttonType}
               className={buttonClassName}
               id={buttonId}
-              onClick={onCardDelete}
+              onClick={onDeleteCardSubmit}
             >
               {buttonText}
             </button>

@@ -72,6 +72,10 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  function handleCardDeleteSubmit(card) {
+    handleCardDelete(card);
+  }
+
   React.useEffect(() => {
     api
       .getUserInfo()
@@ -150,7 +154,7 @@ function App() {
               onDeleteCardClick={handleDeleteConfirmClick}
               onCardClick={handleCardClick}
               onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
+              onCardDelete={setDeleteConfirmPopupOpen}
               cards={cards}
             />
             <Footer />
@@ -180,6 +184,7 @@ function App() {
               title="Are you sure?"
               isOpen={isDeleteConfirmPopupOpen}
               onClose={closeAllPopups}
+              onDeleteCardSubmit={handleCardDeleteSubmit}
               buttonText="Yes"
               buttonType="button"
               buttonClassName="delete-button delete-button_type_deleteConfirm"
