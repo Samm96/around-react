@@ -39,8 +39,8 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
           id="title"
           name="name"
           placeholder="title"
-          minlength="1"
-          maxlength="30"
+          minLength="1"
+          maxLength="30"
           value={name || ""}
           onChange={handleNameChange}
           required
