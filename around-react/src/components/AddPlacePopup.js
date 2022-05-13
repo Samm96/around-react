@@ -13,6 +13,11 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
         setLink(e.target.value);
     }
 
+    function handleInputReset() {
+      setName("");
+      setLink("");
+    }
+
     function handleAddPlaceSubmit(e) {
         e.preventDefault();
 
@@ -20,6 +25,8 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
             name,
             link
         })
+
+        handleInputReset();
     }
 
     return(
