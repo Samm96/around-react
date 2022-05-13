@@ -6,8 +6,13 @@ function DeleteConfirmPopup({
     buttonClassName,
     buttonType,
     buttonText,
-    onDeleteCardSubmit
+    onDeleteCardSubmit,
+    cardToDelete
  }) {
+
+  function handleDelete()  {
+    onDeleteCardSubmit(cardToDelete)
+  }
 
   return (
     <div className={`popup-form ${isOpen ? "popup-form_open" : ""}`}>
@@ -22,7 +27,7 @@ function DeleteConfirmPopup({
               type={buttonType}
               className={buttonClassName}
               id={buttonId}
-              onClick={onDeleteCardSubmit}
+              onClick={handleDelete}
             >
               {buttonText}
             </button>

@@ -19,7 +19,7 @@ function App() {
   const [isDeleteConfirmPopupOpen, setDeleteConfirmPopupOpen] =
     React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
-  
+  const [selectedCardToDelete, setSelectedCardToDelete] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
   const [currentUser, setCurrentUser] = React.useState({
@@ -69,7 +69,10 @@ function App() {
       .then(() => {
         setCards((cardData) => cardData.filter((c) => c._id !== card._id));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        closeAllPopups();
+      })
   }
 
   function handleCardDeleteSubmit(card) {
@@ -125,7 +128,8 @@ function App() {
     setAddPlacePopupOpen(true);
   }
 
-  function handleDeleteConfirmClick() {
+  function handleDeleteConfirmClick(card) {
+    setSelectedCardToDelete(card);
     setDeleteConfirmPopupOpen(true);
   }
 
@@ -151,10 +155,9 @@ function App() {
               onEditProfileClick={handleEditProfileClick}
               onAddPlaceClick={handleAddPlaceClick}
               onEditAvatarClick={handleEditAvatarClick}
-              onDeleteCardClick={handleDeleteConfirmClick}
+              onCardDeleteClick={handleDeleteConfirmClick}
               onCardClick={handleCardClick}
               onCardLike={handleCardLike}
-              onCardDelete={setDeleteConfirmPopupOpen}
               cards={cards}
             />
             <Footer />
@@ -185,6 +188,7 @@ function App() {
               isOpen={isDeleteConfirmPopupOpen}
               onClose={closeAllPopups}
               onDeleteCardSubmit={handleCardDeleteSubmit}
+              cardToDelete={selectedCardToDelete}
               buttonText="Yes"
               buttonType="button"
               buttonClassName="delete-button delete-button_type_deleteConfirm"
