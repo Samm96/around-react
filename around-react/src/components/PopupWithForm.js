@@ -11,7 +11,6 @@ function PopupWithForm({
   buttonId,
 }) {
   return (
-    <>
       <div className={`popup-form ${isOpen ? "popup-form_open" : ""}`}>
         <div className="popup-form__container">
           <button
@@ -35,7 +34,6 @@ function PopupWithForm({
           </form>
         </div>
       </div>
-    </>
   );
 }
 
