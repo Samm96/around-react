@@ -68,11 +68,9 @@ function App() {
       .removeCard(card)
       .then(() => {
         setCards((cardData) => cardData.filter((c) => c._id !== card._id));
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
         closeAllPopups();
       })
+      .catch((err) => console.log(err));
   }
 
   function handleCardDeleteSubmit(card) {

@@ -18,6 +18,10 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
       setLink("");
     }
 
+    React.useEffect(() => {
+      handleInputReset();
+    }, [isOpen]);
+
     function handleAddPlaceSubmit(e) {
         e.preventDefault();
 
@@ -25,8 +29,6 @@ function AddPlacePopup({ isOpen, onClose, onCardAdd, buttonText }) {
             name,
             link
         })
-
-        handleInputReset();
     }
 
     return(
