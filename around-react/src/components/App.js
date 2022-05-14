@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -156,7 +155,6 @@ function App() {
   }, []);
 
   return (
-    <>
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
           <div>
@@ -199,17 +197,12 @@ function App() {
               onClose={closeAllPopups}
               onDeleteCardSubmit={handleCardDeleteSubmit}
               cardToDelete={selectedCardToDelete}
-              buttonText="Yes"
-              buttonType="button"
-              buttonClassName="delete-button delete-button_type_deleteConfirm"
-              buttonId="confirmation-button"
             ></DeleteConfirmPopup>
 
             <ImagePopup card={selectedCard} onClose={closeAllPopups} />
           </div>
         </div>
       </CurrentUserContext.Provider>
-    </>
   );
 }
 

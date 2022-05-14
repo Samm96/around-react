@@ -4,7 +4,6 @@ function DeleteConfirmPopup({
     title, 
     buttonId,
     buttonClassName,
-    buttonType,
     buttonText,
     onDeleteCardSubmit,
     cardToDelete
@@ -24,12 +23,12 @@ function DeleteConfirmPopup({
         ></button>
         <h2 className="popup-form__title">{title}</h2>
             <button
-              type={buttonType}
-              className={buttonClassName}
-              id={buttonId}
+              type="button"
+              className="delete-button delete-button_type_deleteConfirm"
+              id="confirmation-button"
               onClick={handleDelete}
             >
-              {buttonText}
+              Yes
             </button>
           </div>
       </div>
