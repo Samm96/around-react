@@ -2,9 +2,6 @@ function DeleteConfirmPopup({
     isOpen, 
     onClose, 
     title, 
-    buttonId,
-    buttonClassName,
-    buttonText,
     onDeleteCardSubmit,
     cardToDelete
  }) {
