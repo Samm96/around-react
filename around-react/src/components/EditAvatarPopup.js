@@ -2,18 +2,13 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
-  const [avatar, setAvatar] = React.useState(null);
-  const previousAvatar = React.useRef(avatar);
-
-  function handleAvatarChange(e) {
-    setAvatar(e.target.value);
-  }
+  const avatarRef = React.useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
 
     onUpdateAvatar({
-      avatar: (previousAvatar.current = avatar),
+      avatar: avatarRef.current.value,
     });
   }
 
@@ -31,13 +26,11 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
     >
       <input
         className="popup-form__input"
-        name="url"
+        ref={avatarRef}
         placeholder="add image..."
         id="profile-pic"
         type="url"
         pattern="https://.*|http://.*"
-        value={avatar || ""}
-        onChange={handleAvatarChange}
         required
       />
       <span className="popup-form__error-text profile-pic-error"></span>
