@@ -12,7 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeleteConfirmPopup from "./DeleteConfirmPopup";
 
 function App() {
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
     React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
@@ -91,7 +91,7 @@ function App() {
   }
 
   function handleEditProfileClick() {
-    setEditProfilePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleUpdateUser(userUpdate) {
@@ -136,7 +136,7 @@ function App() {
   }
 
   function closeAllPopups() {
-    setEditProfilePopupOpen(false);
+    setIsEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);
     setAddPlacePopupOpen(false);
     setDeleteConfirmPopupOpen(false);
