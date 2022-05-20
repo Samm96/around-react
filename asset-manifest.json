@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/around-react/static/css/main.974cb2dd.css",
+    "main.js": "/around-react/static/js/main.7d9b8ab3.js",
+    "static/js/787.ec704a7a.chunk.js": "/around-react/static/js/787.ec704a7a.chunk.js",
+    "static/media/logo.svg": "/around-react/static/media/logo.296b481aa1b860ebf29177d487b83e96.svg",
+    "static/media/logo-mobile.svg": "/around-react/static/media/logo-mobile.d5d144f5dd40894b2397.svg",
+    "index.html": "/around-react/index.html",
+    "static/media/liked.svg": "/around-react/static/media/liked.bdb4fcab64dcefd54641.svg",
+    "static/media/Trash.svg": "/around-react/static/media/Trash.e78b50e03f694edfe698.svg",
+    "static/media/liked-active.svg": "/around-react/static/media/liked-active.efd0869c1313bd084f89.svg",
+    "static/media/Add-Button-mobile.svg": "/around-react/static/media/Add-Button-mobile.f590446d03d2b5805fad.svg",
+    "static/media/Close-Icon.svg": "/around-react/static/media/Close-Icon.2c95ef2d4194e2e009fb.svg",
+    "static/media/Edit-Button.svg": "/around-react/static/media/Edit-Button.7ef9d133c00f9ad0cca7.svg",
+    "static/media/Pencil.svg": "/around-react/static/media/Pencil.ea8cca3b96edda24ec96.svg",
+    "main.974cb2dd.css.map": "/around-react/static/css/main.974cb2dd.css.map",
+    "main.7d9b8ab3.js.map": "/around-react/static/js/main.7d9b8ab3.js.map",
+    "787.ec704a7a.chunk.js.map": "/around-react/static/js/787.ec704a7a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.974cb2dd.css",
+    "static/js/main.7d9b8ab3.js"
+  ]
+}
